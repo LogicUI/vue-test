@@ -97,9 +97,18 @@
 <script>
 export default {
   name: "HelloWorld",
+  async created() {
+    const comments = await this.getComments();
+    console.log(comments);
+  },
   props: {
-    msg: String
-  }
+    msg: String,
+  },
+  methods: {
+    getComments() {
+      return this.$http.get("/comments");
+    },
+  },
 };
 </script>
 
